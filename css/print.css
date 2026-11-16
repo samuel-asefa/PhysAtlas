@@ -1,0 +1,72 @@
+/*
+ * Print: strips the chrome and lays cards out in columns.
+ * From the Field Kit it prints a compact personal formula sheet; from the
+ * atlas it prints whatever the current filters show.
+ */
+@page { margin: 13mm 12mm; }
+
+:root,
+:root[data-theme="dark"] {
+  color-scheme: light;
+  --paper: #fff;
+  --paper-hi: #fff;
+  --paper-lo: #fff;
+  --ink: #000;
+  --ink-2: #222;
+  --ink-3: #555;
+  --rule: #ccc;
+  --rule-2: #999;
+  --accent: #000;
+  --accent-soft: transparent;
+  --texture: none;
+}
+
+html, body { background: #fff !important; color: #000; }
+a { color: inherit; text-decoration: none; }
+
+body::before,
+.masthead, .frontis, .routes, .sidebar, .scrim, .atlas-bar, .fab,
+.colophon, .toast, .defs, .topo,
+.pin, .entry__tools, .plate__toc, .plate__meta, .sect__blurb,
+.view__tools, .letters, .kit-card__x, .empty .btn { display: none !important; }
+
+.shell, .view { display: block; max-width: none; margin: 0; padding: 0; }
+
+.plate { padding: 0 0 5mm; }
+.plate__head {
+  display: flex; align-items: baseline; gap: 4mm;
+  padding: 0 0 2mm; margin: 0 0 2mm;
+  border: 0; border-bottom: 1.2pt solid #000; background: none;
+}
+.plate__head::before, .plate__head::after { display: none; }
+.plate__num { width: auto; height: auto; border: 0; box-shadow: none; background: none; flex-direction: row; gap: 2mm; }
+.plate__num b { font-size: 16pt; margin: 0; }
+.plate__title { font-size: 18pt; margin: 0; }
+.plate__blurb { display: none; }
+
+.sect { margin-top: 3mm; }
+.sect__title { font-size: 8pt; margin-bottom: 2mm; }
+
+.entries, .kit-grid { display: block; columns: 2; column-gap: 6mm; }
+.entry, .kit-card {
+  display: block; break-inside: avoid; margin: 0 0 3mm;
+  padding: 2.5mm 3mm; border: 0.5pt solid #aaa; box-shadow: none !important;
+}
+.entry__name { font-size: 10.5pt; }
+.entry__forms { padding: 1.5mm 0; overflow: visible; }
+.legend, .note, .trap { font-size: 8pt; }
+.trap { background: none; border-left-width: 1pt; }
+.chip { border-color: #ccc; }
+
+/* Field Kit: denser, three columns */
+body[data-view="kit"] .view__head { margin: 0 0 4mm; }
+body[data-view="kit"] .view__title { font-size: 20pt; }
+body[data-view="kit"] .view__lede, body[data-view="kit"] .kicker { display: none; }
+body[data-view="kit"] .kit-grid { columns: 3; column-gap: 5mm; }
+.kit-plate { margin-top: 3mm; }
+.kit-plate__title { font-size: 11pt; margin: 0 0 2mm; padding-bottom: 1mm; }
+.kit-card { padding: 2mm 2.5mm; }
+.kit-card h4 { font-size: 9pt; }
+.kit-card .katex { font-size: 0.95em; }
+
+.ctab { break-inside: avoid; }
